@@ -1,0 +1,21 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: user
+      host: ${mongo.server.url:localhost}
+      port: ${mongo.server.port:28017}
+      username: ${mongo.username:root}
+      password: ${mongo.password:root1}
+      database: user
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: accounts.google.com
+          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+
+security:
+  jwt:
+    token:
+      secret-key: pdlib
+      expire-length: 3600000
