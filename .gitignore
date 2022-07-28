@@ -181,3 +181,6 @@ Training
 Blog
 About
 Loading complete
+
+# Disable ignore for security config
+!profiles/security

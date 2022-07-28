@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserProfile {
+public class UserProfileEntity {
 
     @Id
     private String userId;
