@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static class Oauth2SecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/api/user-profiles/access-token")
+            http.antMatcher("/api/user-profiles/token")
                     .authorizeRequests()
                     .anyRequest().authenticated()
                     .and()
@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Configuration
     @Order(2)
-    public static class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
+    public static class UserProfilesJwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
         @Value("${security.jwt.token.secret-key}")
         private String secretKey;

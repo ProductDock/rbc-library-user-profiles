@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-class ExchangeTokenService implements ExchangeTokenUseCase {
+class TokenService implements ExchangeTokenUseCase {
 
     private UserProfilePersistenceOutPort userProfilePersistenceOutPort;
     private JwtTokenProvider jwtTokenProvider;

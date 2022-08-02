@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GetUserProfileApi {
 
     @GetMapping
-    public Object getLoggedInUserProfile(Authentication authentication){
+    public UserProfileDto getLoggedInUserProfile(Authentication authentication){
         var userTokenInfo = ((UserTokenInfo)authentication.getPrincipal());
 
         return new UserProfileDto(

@@ -14,18 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @RestController
-@RequestMapping("api/user-profiles/access-token")
+@RequestMapping("api/user-profiles/token")
 public record ExecuteTokenExchangeApi(ExchangeTokenUseCase exchangeTokenUseCase) {
 
     @PostMapping
     public void exchangeTokens(HttpServletResponse response, Authentication authentication) {
-        var jwtToken = ((Jwt) authentication.getCredentials());
-        var userAccount = UserProfile.builder()
-                .fullName(jwtToken.getClaim("name"))
-                .email(jwtToken.getClaim("email"))
-                .profilePicture(jwtToken.getClaim("picture"))
+        var openIdToken = ((Jwt) authentication.getCredentials());
+        var userProfile = UserProfile.builder()
+                .fullName(openIdToken.getClaim("name"))
+                .email(openIdToken.getClaim("email"))
+                .profilePicture(openIdToken.getClaim("picture"))
                 .build();
-        String newToken = exchangeTokenUseCase.exchangeTokensFor(userAccount);
+        String newToken = exchangeTokenUseCase.exchangeTokensFor(userProfile);
         response.setHeader(HttpHeaders.AUTHORIZATION, newToken);
     }
 }
