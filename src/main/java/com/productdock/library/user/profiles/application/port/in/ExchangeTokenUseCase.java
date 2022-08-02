@@ -4,5 +4,5 @@ import com.productdock.library.user.profiles.domain.UserProfile;
 
 public interface ExchangeTokenUseCase {
 
-    String exchangeTokensFor(UserProfile jwtToken);
+    String exchangeTokensFor(UserProfile userProfile);
 }
