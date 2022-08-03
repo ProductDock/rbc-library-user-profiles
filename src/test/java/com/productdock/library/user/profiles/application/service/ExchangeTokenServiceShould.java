@@ -19,7 +19,7 @@ import static org.mockito.Mockito.mock;
 class ExchangeTokenServiceShould {
 
     @InjectMocks
-    private ExchangeTokenService exchangeTokenService;
+    private TokenService exchangeTokenService;
 
     @Mock
     private UserProfilePersistenceOutPort userProfilePersistenceOutPort;

@@ -1,20 +1,17 @@
 package com.productdock.library.user.profiles.integration;
 
 import com.productdock.library.user.profiles.adapter.out.mongo.UserProfileMongoRepository;
-import com.productdock.library.user.profiles.adapter.out.mongo.entity.UserProfileEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 
 import static com.productdock.library.user.profiles.data.provider.out.mongo.UserProfileEntityMother.defaultUserProfileEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -34,7 +31,7 @@ class ExecuteTokenExchangeApiTest {
 
     @Test
     void shouldExecuteTokenExchange_WhenUserProfileNotExist() throws Exception {
-        mockMvc.perform(post("/api/user-profiles/access-token")
+        mockMvc.perform(post("/api/user-profiles/token")
                 .with(jwt().jwt(jwt -> {
                     jwt.claim("email", "::email::");
                     jwt.claim("name", "::fullName::");
@@ -49,7 +46,7 @@ class ExecuteTokenExchangeApiTest {
     void shouldExecuteTokenExchange_WhenUserProfileExist() throws Exception {
         givenAnyUserProfile();
 
-        mockMvc.perform(post("/api/user-profiles/access-token")
+        mockMvc.perform(post("/api/user-profiles/token")
                         .with(jwt().jwt(jwt -> {
                             jwt.claim("email", "::email::");
                             jwt.claim("name", "::fullName::");

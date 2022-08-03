@@ -25,7 +25,7 @@ class GetUserProfileApiTest {
 
     @Test
     void shouldGetLoggedInUserProfileData() throws Exception {
-        var result = mockMvc.perform(post("/api/user-profiles/access-token")
+        var result = mockMvc.perform(post("/api/user-profiles/token")
                         .with(jwt().jwt(jwt -> {
                             jwt.claim("email", "::email::");
                             jwt.claim("name", "::fullName::");
@@ -34,8 +34,10 @@ class GetUserProfileApiTest {
                 .andReturn();
 
         mockMvc.perform(get("/api/user-profiles/user-info")
-                .header("Authorization", "Bearer " + result.getResponse().getHeader("Authorization")))
-                .andExpect(content().json("{\"name\":\"::fullName::\",\"imageUrl\":\"::profilePicture::\",\"email\":\"::email::\"}"));
+                        .header("Authorization", "Bearer " + result.getResponse().getHeader("Authorization")))
+                .andExpect(content().json("{\"name\":\"::fullName::\"," +
+                        "\"imageUrl\":\"::profilePicture::\"," +
+                        "\"email\":\"::email::\"}"));
 
     }
 

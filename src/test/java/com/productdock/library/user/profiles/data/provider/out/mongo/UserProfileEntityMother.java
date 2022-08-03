@@ -1,7 +1,6 @@
 package com.productdock.library.user.profiles.data.provider.out.mongo;
 
 import com.productdock.library.user.profiles.adapter.out.mongo.entity.UserProfileEntity;
-import com.productdock.library.user.profiles.domain.UserProfile;
 
 public class UserProfileEntityMother {
 
