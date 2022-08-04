@@ -7,17 +7,12 @@ spring:
       username: ${mongo.username:root}
       password: ${mongo.password:root1}
       database: user
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://accounts.google.com
-          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
 
 security:
   jwt:
-    token:
-      secret-key: pdlib
+    private.key: classpath:app.key
+    public.key: classpath:app.pub
+    jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
 
 server:
   port: 8085
