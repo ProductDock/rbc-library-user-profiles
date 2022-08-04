@@ -18,14 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public record ExecuteTokenExchangeApi(ExchangeTokenUseCase exchangeTokenUseCase) {
 
     @PostMapping
-    public void exchangeTokens(HttpServletResponse response, Authentication authentication) {
-        var openIdToken = ((Jwt) authentication.getCredentials());
-        var userProfile = UserProfile.builder()
-                .fullName(openIdToken.getClaim("name"))
-                .email(openIdToken.getClaim("email"))
-                .profilePicture(openIdToken.getClaim("picture"))
-                .build();
-        String newToken = exchangeTokenUseCase.exchangeTokensFor(userProfile);
-        response.setHeader(HttpHeaders.AUTHORIZATION, newToken);
+    public String exchangeTokens(HttpServletResponse response, Authentication authentication) {
+        return exchangeTokenUseCase.exchangeTokensFor(authentication);
     }
 }

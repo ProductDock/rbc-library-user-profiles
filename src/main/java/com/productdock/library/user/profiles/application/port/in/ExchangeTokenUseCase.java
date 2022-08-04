@@ -1,8 +1,8 @@
 package com.productdock.library.user.profiles.application.port.in;
 
-import com.productdock.library.user.profiles.domain.UserProfile;
+import org.springframework.security.core.Authentication;
 
 public interface ExchangeTokenUseCase {
 
-    String exchangeTokensFor(UserProfile userProfile);
+    String exchangeTokensFor(Authentication authentication);
 }
