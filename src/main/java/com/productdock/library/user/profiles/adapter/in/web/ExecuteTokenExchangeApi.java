@@ -1,6 +1,7 @@
 package com.productdock.library.user.profiles.adapter.in.web;
 
 import com.productdock.library.user.profiles.application.port.in.ExchangeTokenUseCase;
+import com.productdock.library.user.profiles.config.UserProfileAuthenticationToken;
 import com.productdock.library.user.profiles.domain.UserProfile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public record ExecuteTokenExchangeApi(ExchangeTokenUseCase exchangeTokenUseCase) {
 
     @PostMapping
-    public String exchangeTokens(HttpServletResponse response, Authentication authentication) {
+    public String exchangeTokens(UserProfileAuthenticationToken authentication) {
         return exchangeTokenUseCase.exchangeTokensFor(authentication);
     }
 }

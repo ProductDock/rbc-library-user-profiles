@@ -34,7 +34,7 @@ public class UserProfileAuthenticationToken extends AbstractAuthenticationToken 
   }
 
   @Override
-  public Object getPrincipal() {
+  public UserProfile getPrincipal() {
     return this.principal;
   }
 
