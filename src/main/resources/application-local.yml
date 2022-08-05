@@ -1,0 +1,7 @@
+security:
+  jwt:
+    google:
+      known-issuer: accounts.google.com
+
+server:
+  port: 8085
