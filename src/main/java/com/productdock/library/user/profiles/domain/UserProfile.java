@@ -12,13 +12,6 @@ public class UserProfile {
     public String email;
     public String fullName;
     public String profilePicture;
+    public String role;
 
-    public Map<String, Object> getTokenClaims() {
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("fullName", fullName);
-        claims.put("email", email);
-        claims.put("picture", profilePicture);
-        claims.put("userId", userId);
-        return claims;
-    }
 }

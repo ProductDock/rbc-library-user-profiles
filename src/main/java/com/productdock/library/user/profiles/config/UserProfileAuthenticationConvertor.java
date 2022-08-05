@@ -44,6 +44,7 @@ public class UserProfileAuthenticationConvertor implements Converter<Jwt, Abstra
             .fullName(jwt.getClaim("name"))
             .email(jwt.getClaim("email"))
             .profilePicture(jwt.getClaim("picture"))
+            .role("ROLE_USER")
             .build();
   }
 

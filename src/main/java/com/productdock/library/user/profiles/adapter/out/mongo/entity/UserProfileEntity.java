@@ -21,4 +21,5 @@ public class UserProfileEntity {
     @Indexed(unique=true)
     private String userEmail;
     private String userProfilePicture;
+    private String role;
 }

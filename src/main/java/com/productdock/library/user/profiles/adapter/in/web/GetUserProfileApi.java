@@ -1,5 +1,6 @@
 package com.productdock.library.user.profiles.adapter.in.web;
 
+import com.productdock.library.user.profiles.config.UserProfileAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class GetUserProfileApi {
 
     @GetMapping
-    public UserProfileDto getLoggedInUserProfile() {
-        //should return user info for user passed in request
-        return null;
+    public UserProfileDto getLoggedInUserProfile(UserProfileAuthenticationToken authentication) {
+        var userProfile = authentication.getPrincipal();
+
+        return new UserProfileDto(
+                userProfile.fullName,
+                userProfile.profilePicture,
+                userProfile.email,
+                userProfile.role);
     }
 }
