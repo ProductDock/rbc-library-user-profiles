@@ -22,6 +22,7 @@ public class UserProfileAuthenticationToken extends AbstractAuthenticationToken 
     super(authorities);
     Assert.notNull(token, "token cannot be null");
     Assert.notNull(principal, "principal cannot be null");
+    this.setAuthenticated(true);
     this.principal = principal;
     this.credentials = token;
     this.token = token;
