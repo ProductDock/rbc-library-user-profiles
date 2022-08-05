@@ -31,14 +31,20 @@ import java.util.Map;
 @Configuration
 public class SecurityConfig {
 
-	@Value("${security.jwt.public.key}")
+	@Value("${security.jwt.user-profile.public.key}")
 	RSAPublicKey key;
 
-	@Value("${security.jwt.private.key}")
+	@Value("${security.jwt.user-profile.private.key}")
 	RSAPrivateKey priv;
 
-	@Value("${security.jwt.jwk-set-uri}")
+	@Value("${security.jwt.user-profile.known-issuer}")
+	private String userProfileJwtIssuer;
+
+	@Value("${security.jwt.google.jwk-set-uri}")
 	private String jwkSetUri;
+
+	@Value("${security.jwt.google.known-issuer}")
+	private String googleJwtIssuer;
 
 	@Autowired
 	private UserProfileAuthenticationConvertor userProfileAuthenticationConvertor;
@@ -60,8 +66,8 @@ public class SecurityConfig {
 	@Bean
 	public JwtIssuerAuthenticationManagerResolver authenticationManagerResolver() {
 		Map<String, AuthenticationManager> authenticationManagers = new HashMap<>();
-		authenticationManagers.put("library.productdock.rs", pdAuthenticationManager());
-		authenticationManagers.put("accounts.google.com", googleAuthenticationManager());
+		authenticationManagers.put(userProfileJwtIssuer, pdAuthenticationManager());
+		authenticationManagers.put(googleJwtIssuer, googleAuthenticationManager());
 		return new JwtIssuerAuthenticationManagerResolver
 						(authenticationManagers::get);
 	}
