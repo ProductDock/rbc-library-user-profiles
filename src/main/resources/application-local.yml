@@ -1,7 +1,12 @@
 security:
   jwt:
+    user-profile:
+      private.key: classpath:app.key
+      public.key: classpath:app.pub
+      known-issuer: library.productdock.rs
     google:
-      known-issuer: accounts.google.com
+      jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+      known-issuer: https://accounts.google.com
 
 server:
   port: 8085

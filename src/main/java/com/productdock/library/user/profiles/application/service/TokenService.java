@@ -4,6 +4,8 @@ import com.productdock.library.user.profiles.application.port.in.ExchangeTokenUs
 import com.productdock.library.user.profiles.config.UserProfileAuthenticationToken;
 import com.productdock.library.user.profiles.domain.UserProfile;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
@@ -13,13 +15,14 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 class TokenService implements ExchangeTokenUseCase {
 
     @Value("${security.jwt.user-profile.known-issuer}")
     private String userProfileJwtIssuer;
 
     private static final long TOKEN_DURATION = 36000L;
+    @NonNull
     private JwtEncoder encoder;
 
     @Override
