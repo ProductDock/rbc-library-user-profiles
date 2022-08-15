@@ -61,8 +61,8 @@ out/*
 !out/persistence
 
 # Keys
-main/resources/*.key
-main/resources/*.pub
+src/main/resources/*.key
+src/main/resources/*.pub
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
