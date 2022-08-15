@@ -3,7 +3,6 @@ package com.productdock.library.user.profiles.application.service;
 import com.productdock.library.user.profiles.application.port.in.ExchangeTokenUseCase;
 import com.productdock.library.user.profiles.config.UserProfileAuthenticationToken;
 import com.productdock.library.user.profiles.domain.UserProfile;
-import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +21,7 @@ class TokenService implements ExchangeTokenUseCase {
     private String userProfileJwtIssuer;
 
     private static final long TOKEN_DURATION = 36000L;
+
     @NonNull
     private JwtEncoder encoder;
 

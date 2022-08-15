@@ -33,10 +33,7 @@ public class UserProfileAuthenticationConvertor implements Converter<Jwt, Abstra
 
   private UserProfile createNewProfileOrLoadExistingOne(Jwt jwt) {
     var existingUserProfile = userProfilePersistenceOutPort.findByUserEmail(jwt.getClaim("email"));
-    if (existingUserProfile.isPresent()) {
-      return existingUserProfile.get();
-    }
-    return userProfilePersistenceOutPort.save(userProfileFromJwt(jwt));
+    return existingUserProfile.orElseGet(() -> userProfilePersistenceOutPort.save(userProfileFromJwt(jwt)));
   }
 
   private UserProfile userProfileFromJwt(Jwt jwt) {
