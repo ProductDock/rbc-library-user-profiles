@@ -6,8 +6,8 @@ spring:
 security:
   jwt:
     user-profile:
-      private.key: classpath:app.key
-      public.key: classpath:app.pub
+      private.key: classpath:test.key
+      public.key: classpath:test.pub
       known-issuer: library.productdock.rs
     google:
       jwk-set-uri: http://placeholder
