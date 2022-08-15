@@ -1,10 +1,7 @@
 package com.productdock.library.user.profiles.config;
 
-import java.util.Collection;
-
 import com.productdock.library.user.profiles.application.port.out.persistence.UserProfilePersistenceOutPort;
 import com.productdock.library.user.profiles.domain.UserProfile;
-import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
@@ -13,6 +10,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.stereotype.Component;
+
+import java.util.Collection;
 
 @RequiredArgsConstructor
 @Component

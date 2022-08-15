@@ -2,7 +2,6 @@ package com.productdock.library.user.profiles.config;
 
 import com.productdock.library.user.profiles.application.port.out.persistence.UserProfilePersistenceOutPort;
 import com.productdock.library.user.profiles.domain.UserProfile;
-import lombok.NonNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,15 +10,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.Collection;
+import java.util.Optional;
 
-import static com.productdock.library.user.profiles.data.provider.domain.UserProfileMother.defaultUserProfile;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.OPTIONAL;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 

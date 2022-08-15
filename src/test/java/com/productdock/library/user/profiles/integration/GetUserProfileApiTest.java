@@ -1,6 +1,5 @@
 package com.productdock.library.user.profiles.integration;
 
-import com.productdock.library.user.profiles.adapter.in.web.ExecuteTokenExchangeApi;
 import com.productdock.library.user.profiles.adapter.in.web.GetUserProfileApi;
 import com.productdock.library.user.profiles.config.UserProfileAuthenticationToken;
 import com.productdock.library.user.profiles.domain.UserProfile;
