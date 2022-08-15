@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: user-profiles
+      host: ${mongo.server.url:localhost}
+      port: ${mongo.server.port:28017}
+      username: ${mongo.username:root}
+      password: ${mongo.password:root1}
+      database: user-profiles
+
+logging:
+  level:
+    com.productdock: ${logging.level:INFO}
