@@ -14,9 +14,9 @@ public class GetUserProfileApi {
         var userProfile = authentication.getPrincipal();
 
         return new UserProfileDto(
-                userProfile.fullName,
-                userProfile.profilePicture,
-                userProfile.email,
-                userProfile.role);
+                userProfile.getFullName(),
+                userProfile.getProfilePicture(),
+                userProfile.getEmail(),
+                userProfile.getRole());
     }
 }

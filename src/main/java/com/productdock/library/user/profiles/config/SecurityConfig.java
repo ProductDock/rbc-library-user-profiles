@@ -53,10 +53,10 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 				.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
-				.csrf((csrf) -> csrf.ignoringAntMatchers("/token"))
+				.csrf(csrf -> csrf.ignoringAntMatchers("/token"))
 				.oauth2ResourceServer(oauth2-> oauth2.authenticationManagerResolver(authenticationManagerResolver()))
-				.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.exceptionHandling((exceptions) -> exceptions
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.exceptionHandling(exceptions -> exceptions
 						.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
 						.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
 				);

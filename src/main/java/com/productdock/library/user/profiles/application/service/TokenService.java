@@ -38,11 +38,11 @@ class TokenService implements ExchangeTokenUseCase {
                 .issuer(userProfileJwtIssuer)
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(TOKEN_DURATION))
-                .subject(userProfile.userId)
-                .claim("scope", userProfile.role)
-                .claim("fullName", userProfile.fullName)
-                .claim("email", userProfile.email)
-                .claim("picture", userProfile.profilePicture)
+                .subject(userProfile.getUserId())
+                .claim("scope", userProfile.getRole())
+                .claim("fullName", userProfile.getFullName())
+                .claim("email", userProfile.getEmail())
+                .claim("picture", userProfile.getProfilePicture())
                 .build();
     }
 }

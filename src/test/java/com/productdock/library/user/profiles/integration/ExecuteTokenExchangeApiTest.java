@@ -28,7 +28,7 @@ class ExecuteTokenExchangeApiTest {
         var header = new HashMap<String, Object>();
         header.put("typ", "JWT");
         var claims = new HashMap<String, Object>();
-        claims.put("email", USER_PROFILE.email);
+        claims.put("email", USER_PROFILE.getEmail());
         var userProfileAuthenticationToken = new UserProfileAuthenticationToken(new Jwt("token", Instant.now(), Instant.now(), header, claims), USER_PROFILE, new ArrayList<>());
 
         String token = executeTokenExchangeApi.exchangeTokens(userProfileAuthenticationToken);

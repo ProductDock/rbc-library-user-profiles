@@ -31,10 +31,10 @@ class GetUserProfileApiShould {
 
         var userProfileDto = getUserProfileApi.getLoggedInUserProfile(authentication);
 
-        assertThat(userProfileDto.email).isEqualTo(userTokenInfo.email);
-        assertThat(userProfileDto.name).isEqualTo(userTokenInfo.fullName);
-        assertThat(userProfileDto.imageUrl).isEqualTo(userTokenInfo.profilePicture);
-        assertThat(userProfileDto.role).isEqualTo(userTokenInfo.role);
+        assertThat(userProfileDto.email).isEqualTo(userTokenInfo.getEmail());
+        assertThat(userProfileDto.name).isEqualTo(userTokenInfo.getFullName());
+        assertThat(userProfileDto.imageUrl).isEqualTo(userTokenInfo.getProfilePicture());
+        assertThat(userProfileDto.role).isEqualTo(userTokenInfo.getRole());
     }
 
 }

@@ -18,11 +18,11 @@ class UserProfileMapperShould {
         var userProfile = userProfileMapper.toDomain(userProfileEntity);
 
         try(var softly = new AutoCloseableSoftAssertions()){
-            softly.assertThat(userProfile.userId).isEqualTo(userProfileEntity.getUserId());
-            softly.assertThat(userProfile.email).isEqualTo(userProfileEntity.getUserEmail());
-            softly.assertThat(userProfile.fullName).isEqualTo(userProfileEntity.getUserFullName());
-            softly.assertThat(userProfile.profilePicture).isEqualTo(userProfileEntity.getUserProfilePicture());
-            softly.assertThat(userProfile.role).isEqualTo(userProfileEntity.getRole());
+            softly.assertThat(userProfile.getUserId()).isEqualTo(userProfileEntity.getUserId());
+            softly.assertThat(userProfile.getEmail()).isEqualTo(userProfileEntity.getUserEmail());
+            softly.assertThat(userProfile.getFullName()).isEqualTo(userProfileEntity.getUserFullName());
+            softly.assertThat(userProfile.getProfilePicture()).isEqualTo(userProfileEntity.getUserProfilePicture());
+            softly.assertThat(userProfile.getRole()).isEqualTo(userProfileEntity.getRole());
         }
     }
 
@@ -33,11 +33,11 @@ class UserProfileMapperShould {
         var userProfileEntity = userProfileMapper.toEntity(userProfile);
 
         try(var softly = new AutoCloseableSoftAssertions()){
-            softly.assertThat(userProfileEntity.getUserId()).isEqualTo(userProfile.userId);
-            softly.assertThat(userProfileEntity.getUserEmail()).isEqualTo(userProfile.email);
-            softly.assertThat(userProfileEntity.getUserFullName()).isEqualTo(userProfile.fullName);
-            softly.assertThat(userProfileEntity.getUserProfilePicture()).isEqualTo(userProfile.profilePicture);
-            softly.assertThat(userProfileEntity.getRole()).isEqualTo(userProfile.role);
+            softly.assertThat(userProfileEntity.getUserId()).isEqualTo(userProfile.getUserId());
+            softly.assertThat(userProfileEntity.getUserEmail()).isEqualTo(userProfile.getEmail());
+            softly.assertThat(userProfileEntity.getUserFullName()).isEqualTo(userProfile.getFullName());
+            softly.assertThat(userProfileEntity.getUserProfilePicture()).isEqualTo(userProfile.getProfilePicture());
+            softly.assertThat(userProfileEntity.getRole()).isEqualTo(userProfile.getRole());
         }
     }
 }

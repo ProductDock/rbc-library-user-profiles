@@ -28,14 +28,14 @@ class GetUserProfileApiTest {
         var header = new HashMap<String, Object>();
         header.put("typ", "JWT");
         var claims = new HashMap<String, Object>();
-        claims.put("email", USER_PROFILE.email);
+        claims.put("email", USER_PROFILE.getEmail());
         var userProfileAuthenticationToken = new UserProfileAuthenticationToken(new Jwt("token", Instant.now(), Instant.now(), header, claims), USER_PROFILE, new ArrayList<>());
 
         var userProfileDto = getUserProfileApi.getLoggedInUserProfile(userProfileAuthenticationToken);
 
-        assertThat(userProfileDto.email).isEqualTo(USER_PROFILE.email);
-        assertThat(userProfileDto.name).isEqualTo(USER_PROFILE.fullName);
-        assertThat(userProfileDto.imageUrl).isEqualTo(USER_PROFILE.profilePicture);
-        assertThat(userProfileDto.role).isEqualTo(USER_PROFILE.role);
+        assertThat(userProfileDto.email).isEqualTo(USER_PROFILE.getEmail());
+        assertThat(userProfileDto.name).isEqualTo(USER_PROFILE.getFullName());
+        assertThat(userProfileDto.imageUrl).isEqualTo(USER_PROFILE.getProfilePicture());
+        assertThat(userProfileDto.role).isEqualTo(USER_PROFILE.getRole());
     }
 }
