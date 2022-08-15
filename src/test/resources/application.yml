@@ -1,0 +1,17 @@
+spring:
+  mongodb:
+    embedded:
+      version: 3.5.5
+
+security:
+  jwt:
+    user-profile:
+      private.key: classpath:test.key
+      public.key: classpath:test.pub
+      known-issuer: library.productdock.rs
+    google:
+      jwk-set-uri: http://placeholder
+      known-issuer: http://placeholder
+
+mongock:
+  enabled: false

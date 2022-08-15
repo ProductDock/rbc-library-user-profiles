@@ -60,7 +60,9 @@ out/*
 !out/messaging
 !out/persistence
 
-
+# Keys
+src/main/resources/*.key
+src/main/resources/*.pub
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -181,3 +183,6 @@ Training
 Blog
 About
 Loading complete
+
+# Disable ignore for security config
+!profiles/security
