@@ -1,8 +1,8 @@
 security:
   jwt:
     user-profile:
-      private.key: classpath:app.key
-      public.key: classpath:app.pub
+      private.key: classpath:app-local.key
+      public.key: classpath:app-local.pub
       known-issuer: library.productdock.rs
     google:
       jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
