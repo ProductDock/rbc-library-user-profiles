@@ -8,9 +8,9 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
+import static com.productdock.library.user.profiles.data.provider.adapter.out.mongo.UserProfileEntityMother.defaultUserProfileEntity;
 import static com.productdock.library.user.profiles.data.provider.adapter.out.mongo.UserProfileEntityMother.defaultUserProfileEntityBuilder;
 import static com.productdock.library.user.profiles.data.provider.domain.UserProfileMother.defaultUserProfile;
-import static com.productdock.library.user.profiles.data.provider.adapter.out.mongo.UserProfileEntityMother.defaultUserProfileEntity;
 
 class UserProfileEntityMapperShould {
 
