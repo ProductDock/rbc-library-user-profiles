@@ -6,6 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.Collection;
+
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserProfileMapper {
 
@@ -13,6 +15,8 @@ public interface UserProfileMapper {
     @Mapping(target = "profilePicture", source = "source.userProfilePicture")
     @Mapping(target = "fullName", source = "source.userFullName")
     UserProfile toDomain(UserProfileEntity source);
+
+    Collection<UserProfile> toDomainCollection(Collection<UserProfileEntity> source);
 
     @Mapping(target = "userEmail", source = "source.email")
     @Mapping(target = "userProfilePicture", source = "source.profilePicture")

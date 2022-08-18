@@ -4,8 +4,11 @@ import org.assertj.core.api.AutoCloseableSoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
+import static com.productdock.library.user.profiles.data.provider.adapter.out.mongo.UserProfileEntityMother.defaultUserProfileEntityBuilder;
 import static com.productdock.library.user.profiles.data.provider.domain.UserProfileMother.defaultUserProfile;
-import static com.productdock.library.user.profiles.data.provider.out.mongo.UserProfileEntityMother.defaultUserProfileEntity;
+import static com.productdock.library.user.profiles.data.provider.adapter.out.mongo.UserProfileEntityMother.defaultUserProfileEntity;
 
 class UserProfileMapperShould {
 
@@ -23,6 +26,29 @@ class UserProfileMapperShould {
             softly.assertThat(userProfile.getFullName()).isEqualTo(userProfileEntity.getUserFullName());
             softly.assertThat(userProfile.getProfilePicture()).isEqualTo(userProfileEntity.getUserProfilePicture());
             softly.assertThat(userProfile.getRole()).isEqualTo(userProfileEntity.getRole());
+        }
+    }
+
+    @Test
+    void mapUserProfileEntityCollectionToUserProfileCollection(){
+        var firstEntity = defaultUserProfileEntity();
+        var secondEntity = defaultUserProfileEntityBuilder()
+                .userId("1")
+                .userEmail("::email1::")
+                .userProfilePicture("::image1::")
+                .userFullName("::name1::").build();
+        var userProfileEntities = List.of(firstEntity, secondEntity);
+
+        var userProfiles = userProfileMapper.toDomainCollection(userProfileEntities).stream().toList();
+
+        for (int i = 0; i < userProfiles.size(); i++) {
+            try(var softly = new AutoCloseableSoftAssertions()){
+                softly.assertThat(userProfiles.get(i).getUserId()).isEqualTo(userProfileEntities.get(i).getUserId());
+                softly.assertThat(userProfiles.get(i).getEmail()).isEqualTo(userProfileEntities.get(i).getUserEmail());
+                softly.assertThat(userProfiles.get(i).getFullName()).isEqualTo(userProfileEntities.get(i).getUserFullName());
+                softly.assertThat(userProfiles.get(i).getProfilePicture()).isEqualTo(userProfileEntities.get(i).getUserProfilePicture());
+                softly.assertThat(userProfiles.get(i).getRole()).isEqualTo(userProfileEntities.get(i).getRole());
+            }
         }
     }
 
