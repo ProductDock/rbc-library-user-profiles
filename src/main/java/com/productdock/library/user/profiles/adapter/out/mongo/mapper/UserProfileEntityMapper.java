@@ -9,7 +9,7 @@ import org.mapstruct.ReportingPolicy;
 import java.util.Collection;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
-public interface UserProfileMapper {
+public interface UserProfileEntityMapper {
 
     @Mapping(target = "email", source = "source.userEmail")
     @Mapping(target = "profilePicture", source = "source.userProfilePicture")
