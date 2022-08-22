@@ -1,7 +1,7 @@
 package com.productdock.library.user.profiles.application.service;
 
 import com.productdock.library.user.profiles.config.UserProfileAuthenticationToken;
-import org.junit.jupiter.api.BeforeEach;
+import com.productdock.library.user.profiles.config.UserProfileJwtIssuer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import static com.productdock.library.user.profiles.data.provider.domain.UserProfileMother.defaultUserProfile;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,10 +25,9 @@ class TokenServiceShould {
     @Mock
     private JwtEncoder encoder;
 
-    @BeforeEach
-    public void setUp() {
-        ReflectionTestUtils.setField(tokenService, "userProfileJwtIssuer", "ok");
-    }
+    @Mock
+    private UserProfileJwtIssuer userProfileJwtIssuer;
+
 
     @Test
     void exchangeTokens() {
@@ -37,6 +35,7 @@ class TokenServiceShould {
         var userProfile = defaultUserProfile();
         var jwtToken = mock(Jwt.class);
         given(userProfileAuthenticationToken.getPrincipal()).willReturn(userProfile);
+        given(userProfileJwtIssuer.getIssuer()).willReturn("::issuer::");
         given(encoder.encode(any())).willReturn(jwtToken);
         given(jwtToken.getTokenValue()).willReturn("::jwtToken::");
 
