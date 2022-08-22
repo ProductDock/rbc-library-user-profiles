@@ -1,4 +1,4 @@
-package com.productdock.library.user.profiles.data.provider.out.mongo;
+package com.productdock.library.user.profiles.data.provider.adapter.out.mongo;
 
 import com.productdock.library.user.profiles.adapter.out.mongo.entity.UserProfileEntity;
 

@@ -2,6 +2,7 @@ package com.productdock.library.user.profiles.application.service;
 
 import com.productdock.library.user.profiles.application.port.in.ExchangeTokenUseCase;
 import com.productdock.library.user.profiles.config.UserProfileAuthenticationToken;
+import com.productdock.library.user.profiles.config.UserProfileJwtIssuer;
 import com.productdock.library.user.profiles.domain.UserProfile;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -17,13 +18,13 @@ import java.time.Instant;
 @RequiredArgsConstructor
 class TokenService implements ExchangeTokenUseCase {
 
-    @Value("${security.jwt.user-profile.known-issuer}")
-    private String userProfileJwtIssuer;
-
     private static final long TOKEN_DURATION = 36000L;
 
     @NonNull
     private JwtEncoder encoder;
+
+    @NonNull
+    private UserProfileJwtIssuer userProfileJwtIssuer;
 
     @Override
     public String exchangeTokensFor(UserProfileAuthenticationToken authentication) {
@@ -35,7 +36,7 @@ class TokenService implements ExchangeTokenUseCase {
     private JwtClaimsSet createClaimsFrom(UserProfile userProfile) {
         Instant now = Instant.now();
         return JwtClaimsSet.builder()
-                .issuer(userProfileJwtIssuer)
+                .issuer(userProfileJwtIssuer.getIssuer())
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(TOKEN_DURATION))
                 .subject(userProfile.getUserId())
