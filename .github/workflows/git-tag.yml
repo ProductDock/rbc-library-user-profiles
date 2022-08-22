@@ -1,0 +1,11 @@
+name: Create new Git Tag when PR is merged
+
+on:
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  create-git-tag-when-merged:
+    uses: ProductDock/rbc-github-workflows/.github/workflows/git-tag.yml@main
+    secrets: inherit
