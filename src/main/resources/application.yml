@@ -11,3 +11,6 @@ spring:
 logging:
   level:
     com.productdock: ${logging.level:INFO}
+
+mongock:
+  change-logs-scan-package: com.productdock.library.user.profiles.config.dbmigrations
