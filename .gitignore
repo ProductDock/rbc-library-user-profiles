@@ -63,6 +63,8 @@ out/*
 # Keys
 src/main/resources/*.key
 src/main/resources/*.pub
+!app-local.pub
+!app-local.key
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
