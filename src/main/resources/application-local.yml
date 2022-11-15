@@ -7,6 +7,3 @@ security:
     google:
       jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
       known-issuer: https://accounts.google.com
-
-server:
-  port: 8085
