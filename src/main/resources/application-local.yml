@@ -6,8 +6,3 @@ MONGO_PASSWORD: root1
 USER_PROFILES_JWT_PRIVATE_KEY: src/main/resources/app-local.key
 USER_PROFILES_JWT_PUBLIC_KEY: src/main/resources/app-local.pub
 JWT_ISSUER: library.productdock.rs
-
-LOGGING_LEVEL: INFO
-
-server:
-  port: 8085

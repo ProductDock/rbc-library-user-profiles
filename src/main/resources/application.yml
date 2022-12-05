@@ -20,7 +20,7 @@ security:
 
 logging:
   level:
-    com.productdock: ${LOGGING_LEVEL}
+    com.productdock: INFO
 
 mongock:
   change-logs-scan-package: com.productdock.library.user.profiles.config.dbmigrations
