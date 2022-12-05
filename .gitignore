@@ -120,6 +120,9 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/12206-codestream
 .idea/codestream.xml
 
+#Azure
+.idea/azure/azureSettings.xml
+
 ### macOS ###
 # General
 .DS_Store
