@@ -1,9 +1,0 @@
-security:
-  jwt:
-    user-profile:
-      private.key: file:${user.profiles.jwt.private.key}
-      public.key: file:${user.profiles.jwt.public.key}
-      known-issuer: library.productdock.rs
-    google:
-      jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
-      known-issuer: https://accounts.google.com
