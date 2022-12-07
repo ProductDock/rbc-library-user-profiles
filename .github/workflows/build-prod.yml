@@ -11,5 +11,4 @@ jobs:
     uses: ProductDock/rbc-github-workflows/.github/workflows/build-prod.yml@main
     with:
       update-script: /home/pd-library/update-user-profiles-image.sh
-      docker-database-build-arg: true
     secrets: inherit
