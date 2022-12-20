@@ -2,6 +2,7 @@
 <configuration>
 
     <property name="LOGS" value="./logs"/>
+    <springProperty scope="context" name="FileLoggingEnabled" source="file-logging-enabled"/>
 
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">
@@ -14,7 +15,7 @@
 
     <appender name="RollingFile"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/inventory-logger.log</file>
+        <file>${LOGS}/user-profiles-logger.log</file>
         <encoder
                 class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
@@ -22,7 +23,7 @@
 
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS}/archived/inventory-logger-%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${LOGS}/archived/user-profiles-logger-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <maxFileSize>10MB</maxFileSize>
             <maxHistory>7</maxHistory>
@@ -39,7 +40,7 @@
         <appender-ref ref="Console"/>
     </logger>
 
-    <if condition='"${LOG_TO_FILE}".equals("true")'>
+    <if condition='"${FileLoggingEnabled}".equals("true")'>
         <then>
             <root level="info">
                 <appender-ref ref="RollingFile"/>
