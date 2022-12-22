@@ -52,7 +52,8 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
-				.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
+				.authorizeHttpRequests(authorize -> authorize.antMatchers("/actuator/**").permitAll()
+						.anyRequest().authenticated())
 				.csrf(csrf -> csrf.ignoringAntMatchers("/token"))
 				.oauth2ResourceServer(oauth2-> oauth2.authenticationManagerResolver(authenticationManagerResolver()))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
