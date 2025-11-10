@@ -7,6 +7,8 @@ spring:
       username: ${MONGO_USERNAME}
       password: ${MONGO_PASSWORD}
       database: user-profiles
+      auto-index-creation: true
+
 
 security:
   jwt:
